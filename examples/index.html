@@ -124,6 +124,11 @@
                   <h1>Using translate directive</h1>
                   <p class="lead" translate="USING_DIRECTIVE"></p>
                 </div>
+
+                <div class="well">
+                  <h1>Using translate directive</h1>
+                  <p class="lead" translate>USING_DIRECTIVE</p>
+                </div>
               </div>
 
               <!-- Inside for loop -->
@@ -138,6 +143,7 @@
               <div ng-switch-when="variableReplacement" class="text-center">
                 <div class="well">
                   <h1>Variable replacement</h1>
+                  
                   <p class="lead">Let's say we want to say welcome to an user named Bob</p>
                   <p><span translate="SAY_HELLO" translate-values='{ username: "Bob"}'></span></p>
                   <br>
@@ -165,7 +171,7 @@
               <div ng-switch-when="highCharts" class="text-center">
                 <div class="well">
                   <h1>Highcharts</h1>
-                  <div id="highChartsGraph" style="height: 300px"></div>
+                  
                 </div>
               </div>
             </div>
@@ -179,6 +185,7 @@
         </div>
       </div>
 
+      <div id="highChartsGraph" style="height: 300px"></div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <script src="assets/js/bootstrap.min.js"></script>
       <script src="http://code.highcharts.com/highcharts.js"></script>

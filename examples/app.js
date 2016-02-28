@@ -170,13 +170,13 @@ app.controller('mainCtrl', ['$scope', '$translate', function ($scope, $translate
 	Highcharts.setOptions({
 		lang: {
 			loading: methodtowrite['highcharts.months.loading'](),
-			months: methodtowrite['highcharts.months.arraySpanish']()
+			months: methodtowrite['highcharts.months.arrayFrench']()
 		}
 	});
 
 	var chart = new Highcharts.Chart({
 		chart: {
-			renderTo: 'div.#highChartsGraph'
+			renderTo: 'highChartsGraph'
 		},
 		xAxis: {
 			type: 'datetime',
@@ -191,5 +191,4 @@ app.controller('mainCtrl', ['$scope', '$translate', function ($scope, $translate
             pointInterval: 30 * 24 * 3600 * 1000 // 30 days
         }]
     });
-
 }]);
