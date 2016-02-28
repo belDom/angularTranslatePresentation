@@ -1,0 +1,1 @@
+This is just a presentation to show how to use angular-translate.

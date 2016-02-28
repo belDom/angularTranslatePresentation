@@ -1,37 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Internationalization examples</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <title>Internationalization examples</title>
 
-    <!-- Libraries -->
-    <script src="assets/js/angular.min.js"></script>
-    <script src="app.js"></script>
-    <script src="assets/js/angular-translate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.0/angular-sanitize.min.js"></script>
+  <!-- Bootstrap -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!-- Libraries -->
+  <script src="assets/js/angular.min.js"></script>
+  <script src="app.js"></script>
+
+  <script src="assets/js/angular-translate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.0/angular-sanitize.min.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body ng-app="app" ng-controller="mainCtrl">
-    <div class="container">
-      <h1 translate="TITLE"></h1>
-    </div>
+      <![endif]-->
+    </head>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <body ng-app="app" ng-controller="mainCtrl">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-3">
+            <ul class="nav nav-pills nav-stacked">
+              <li><a ng-click="viewSelected = 'simpleExample'">Simple Example</a></li>
+              <li><a ng-click="viewSelected = 'fallbackLanguage'">Fallback Language</a></li>
+              <li><a ng-click="viewSelected = 'nestedExample'">Nested Example</a></li>
+              <li><a ng-click="viewSelected = 'shortcut'">Shortcut</a></li>
+              <li><a ng-click="viewSelected = 'linked'">Linked</a></li>
+              <li><a ng-click="viewSelected = 'usingTranslateService'">Using translate service</a></li>
+              <li><a ng-click="viewSelected = 'usingTranslateFilter'">Using translate filter</a></li>
+              <li><a ng-click="viewSelected = 'usingTranslateDirective'">Using translate directive</a></li>
+              <li><a ng-click="viewSelected = 'insideLoop'">Using translate inside a ng-repeat</a></li>
+              <li><a ng-click="viewSelected = 'variableReplacement'">Variable replacement</a></li>
+              <li><a ng-click="viewSelected = 'uigrid'">ui-grid and $translate</a></li>
+              <li><a ng-click="viewSelected = 'highCharts'">Hightcharts internationalization</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-9">
+            <div class="well" ng-switch on="viewSelected">
 
-  </body>
-</html>
+              <!--This is a simple example-->
+              <div ng-switch-when="simpleExample" class="text-center">
+                <h1>This is a simple example</h1>
+                <h2 translate="THIS_IS_AN_EXAMPLE"></h2>
+              </div>
+
+              <!-- Fallback language -->
+              <div ng-switch-when="fallbackLanguage" class="text-center">
+                <h1>Fallback language</h1>
+                <h2 translate="ONLY_ENGLISH"></h2>
+              </div>
+
+              <!-- Nested example-->
+              <div ng-switch-when="nestedExample" class="text-center">
+                <h1>Nested Example</h1>
+                <h2 translate="NESTED.NESTED_EXAMPLE"></h2>
+              </div>
+
+              <!-- Shortcut -->
+              <div ng-switch-when="shortcut" class="text-center">
+                <h1>Shortcut</h1>
+                <h2 translate="NESTED"></h2>
+              </div>
+
+              <!-- Linked -->
+              <div ng-switch-when="linked" class="text-center">
+                <h1>Linked</h1>
+                Common: <h2 translate="COMMON.SEND"></h2>
+                Common another: <h2 translate="COMMON_ANOTHER.SEND"></h2>
+              </div>
+
+              <!-- Translate as a service -->
+              <div ng-switch-when="usingTranslateService" class="text-center">
+                <h1>Using translate as a service</h1>
+                <h2>Monday: {{monday}}</h2>
+
+                <h1>Using translate with multiple params</h1>
+                Translating multiple translation IDs: 
+                Tuesday: {{tuesday}}
+                Wednesday: {{wednesday}}
+              </div>
+
+              <!-- Using translate filter -->
+              <div ng-switch-when="usingTranslateFilter" class="text-center">
+                <h1>Using translate filter</h1>
+                USING AS WITH A FILTER<br>
+                Days of the week<br>
+                <ul>
+                  <li>{{'WEEK_DAYS.MONDAY' | translate}}</li>
+                  <li>{{'WEEK_DAYS.TUESDAY' | translate}}</li>
+                  <li>{{'WEEK_DAYS.WEDNESDAY' | translate}}</li>
+                  <li>{{'WEEK_DAYS.THRUSDAY' | translate}}</li>
+                  <li>{{'WEEK_DAYS.FRIDAY' | translate}}</li>
+                  <li>{{'WEEK_DAYS.SATURDAY' | translate}}</li>
+                  <li>{{'WEEK_DAYS.SUNDAY' | translate}}</li>
+                </ul>
+              </div>
+
+              <!-- Using translate directive -->
+              <div ng-switch-when="usingTranslateDirective" class="text-center">
+                <h1>Using translate directive</h1>
+
+              </div>
+
+              <!-- Inside for loop -->
+              <div ng-switch-when="insideLoop" class="text-center">
+                <h1>Inside ng-repeat</h1>  
+                <ul>
+                  <li ng-repeat="singleDay in daysOfTheWeek" translate="{{singleDay.day}}"></li>
+                </ul>
+              </div>
+
+              <!-- Variable replacement -->
+              <div ng-switch-when="variableReplacement" class="text-center">
+                <h1>Variable replacement</h1>
+                <h1>Variable replacement</h1>
+                Using the name: Bo <br>
+                <span translate="SAY_HELLO" translate-values='{ username: "Bo"}'></span>
+                <br>
+                Using Custom translate value attributes<br>
+                <span translate="SAY_HELLO" translate-value-username="Bo"></span><br>
+              </div>
+
+              <!-- UI-GRID -->
+              <div ng-switch-when="uigrid" class="text-center">
+                <h1>UI-GRID</h1>
+              </div>
+
+              <!-- HIGH charts-->
+              <div ng-switch-when="highCharts" class="text-center">
+                <h1>Highcharts</h1>
+              </div>
+            </div>
+          </div>
+        
+          <div class="text-center" role="group">
+          <button class="btn btn-primary" ng-click="changeLanguage('en')">English</button>
+          <button class="btn btn-warning" ng-click="changeLanguage('de')">German</button>
+          <button class="btn btn-danger" ng-click="changeLanguage('es')">Spanish</button>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+    </body>
+    </html>
