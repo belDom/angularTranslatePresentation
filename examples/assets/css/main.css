@@ -1,3 +1,15 @@
 body {
 	padding: 30px;
 }
+
+h1 {
+	border-bottom: 2px solid green;
+}
+
+.grid {
+  height: 250px;
+}
+
+.sidebar {
+	border-right: 4px solid #CC4A14;
+}

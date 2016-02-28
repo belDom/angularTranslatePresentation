@@ -19,7 +19,13 @@ var englishTranslations = {
 		'SATURDAY': 'Saturday',
 		'SUNDAY': 'Sunday'
 	},
-	'SAY_HELLO': 'Welcome, {{username}}. We missed you!'
+	'USING_DIRECTIVE': 'We are using angular-translate as a directive',
+	'SAY_HELLO': 'Welcome, {{username}}. We missed you!',
+	'UI_GRID': {
+		'NAME': 'First name',
+		'LAST_NAME': 'Last name',
+		'COMPANY': 'Company'
+	}
 };
 
 var germanTranslations = {
@@ -40,7 +46,13 @@ var germanTranslations = {
 		'SATURDAY': 'Samstag',
 		'SUNDAY': 'Sonntag'
 	},
-	'SAY_HELLO': 'Herzlich willkommen, {{username}}. Wir verpassten Sie!'
+	'USING_DIRECTIVE': 'Wir sind mit Winkel übersetzen als eine Richtlinie',
+	'SAY_HELLO': 'Herzlich willkommen, {{username}}. Wir verpassten Sie!',
+	'UI_GRID': {
+		'NAME': 'Vorname',
+		'LAST_NAME': 'Nachname',
+		'COMPANY': 'Unternehmen'
+	}
 };
 
 var spanishTranslations = {
@@ -61,15 +73,21 @@ var spanishTranslations = {
 		'SATURDAY': 'Sábado',
 		'SUNDAY': 'Domingo'
 	},
-	'SAY_HELLO': 'Bienvenido, {{username}}. ¡Te echamos de menos!'
+	'USING_DIRECTIVE': 'Estamos utilizando angular-translate como una directiva',
+	'SAY_HELLO': 'Bienvenido, {{username}}. ¡Te echamos de menos!',
+	'UI_GRID': {
+		'NAME': 'Nombre',
+		'LAST_NAME': 'Apellido',
+		'COMPANY': 'Empresa'
+	}
 };
 
-var app = angular.module('app', ['pascalprecht.translate']);
+var app = angular.module('app', ['pascalprecht.translate', 'ui.grid']);
 
 app.config(['$translateProvider', function ($translateProvider) {
 
 	// -- It is important to set up a fallback language. To set up a fallback language is important because it would be the language set as defeault when the text does not have any translation.
-	$translateProvider.fallbackLanguage('en');
+	$translateProvider.fallbackLanguage(['en', 'de']);
 
 	// -- Where the languages keys are registered. The main goal is that no matter what subtype of language the user selects it is going to fallback to the ones that we have available.
 	// -- Useful for when the browser will set up the language. This is important for when trying to avoid the language subfix. Ex: en_UK, en_US.
@@ -107,9 +125,9 @@ app.controller('mainCtrl', ['$scope', '$translate', function ($scope, $translate
 	});
 
 	//-- When translating multiple translation IDs
-	$translate('WEEK_DAYS.TUESDAY', 'WEEK_DAYS.WEDNESDAY').then(function (response) {
-		$scope.tuesday = response.TUESDAY;
-		$scope.wednesday = response.WEDNESDAY;
+	$translate(['WEEK_DAYS.TUESDAY', 'WEEK_DAYS.WEDNESDAY']).then(function (response) {
+		$scope.tuesday = response['WEEK_DAYS.TUESDAY'];
+		$scope.wednesday = response['WEEK_DAYS.WEDNESDAY'];
 	});
 
 	//-- Translating inside a ng-repeat
@@ -127,4 +145,20 @@ app.controller('mainCtrl', ['$scope', '$translate', function ($scope, $translate
 	$scope.changeLanguage = function (key) {
 		$translate.use(key);
 	}
+
+	//-- This is for UI-GRID
+	$scope.gridOptions = {};
+
+	$scope.gridOptions.columnDefs = [
+	{ displayName: 'UI_GRID.NAME', field: 'name', headerCellFilter: 'translate' },
+	{ displayName: 'UI_GRID.LAST_NAME', field: 'lastName', headerCellFilter: 'translate' },
+	{ displayName: 'UI_GRID.COMPANY', field: 'company', headerCellFilter: 'translate', enableFiltering: false  }
+	];
+	$scope.gridOptions.data = [
+	{"name": "Cox", "lastName": "Carney", "company": "Enormo"}, 
+	{"name": "Lorraine", "lastName": "Wise", "company": "Comveyer"}, 
+	{"name": "Nancy", "lastName": "Waters", "company": "Fuelton"}
+	];
+
+
 }]);

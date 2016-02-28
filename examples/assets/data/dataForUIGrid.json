@@ -1,0 +1,182 @@
+[
+  {
+    "__metadata": {
+      "id": "1",
+      "fields": {
+        "id": {
+          "type": "int",
+          "unique": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "float"
+        }
+      },
+      "descriptives": {},
+      "dates": {}
+    },
+    "id": 1,
+    "name": "Basketball",
+    "type": "Sport",
+    "description": "25",
+    "price": 10
+  },
+  {
+    "__metadata": {
+      "id": "2",
+      "fields": {
+        "id": {
+          "type": "int",
+          "unique": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "float"
+        }
+      },
+      "descriptives": {},
+      "dates": {}
+    },
+    "id": 2,
+    "name": "Football",
+    "type": "Sport",
+    "description": "gggggg",
+    "price": 55
+  },
+  {
+    "__metadata": {
+      "id": "3",
+      "fields": {
+        "id": {
+          "type": "int",
+          "unique": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "float"
+        }
+      },
+      "descriptives": {},
+      "dates": {}
+    },
+    "id": 3,
+    "name": "Tent",
+    "type": "Camping",
+    "description": "asdfa",
+    "price": 118
+  },
+  {
+    "__metadata": {
+      "id": "4",
+      "fields": {
+        "id": {
+          "type": "int",
+          "unique": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "float"
+        }
+      },
+      "descriptives": {},
+      "dates": {}
+    },
+    "id": 4,
+    "name": "Sleeping Bag",
+    "type": "Camping",
+    "description": "helloworld",
+    "price": 3123
+  },
+  {
+    "__metadata": {
+      "id": "5",
+      "fields": {
+        "id": {
+          "type": "int",
+          "unique": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "float"
+        }
+      },
+      "descriptives": {},
+      "dates": {}
+    },
+    "id": 5,
+    "name": "Thermal Shirt",
+    "type": "Camping",
+    "description": "vxcvzxcvxcv",
+    "price": 555
+  },
+  {
+    "__metadata": {
+      "id": "7",
+      "fields": {
+        "id": {
+          "type": "int",
+          "unique": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "float"
+        }
+      },
+      "descriptives": {},
+      "dates": {}
+    },
+    "id": 7,
+    "name": "",
+    "type": "",
+    "description": "cx",
+    "price": 44
+  }
+]
