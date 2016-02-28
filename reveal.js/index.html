@@ -49,6 +49,7 @@
 					<ul>
 						<li>What is internationalization?</li>
 						<li>angular-translate</li>
+						<li>Pluralization and Formatting</li>
 						<li>UI-Grid</li>
 						<li>HighCharts</li>
 						<li>Unit tests</li>
@@ -147,40 +148,101 @@
 						<h2>Variable Replacement</h2>
 						<h3>Using translate service</h3>
 						<img data-src="img/variableReplacementeService.png" alt="">
-				</section>
-				<section>
-					<h2>Variable Replacement</h2>
-					<h3>Using translate filter</h3>
-					<pre><code>{{ 'TRANSLATION_ID' | translate:'{ username: "PascalPrecht" }' }}</code></pre>
-				</section>
-				<section>
-					<h2>Variable Replacement</h2>
-					<h3>Using translate directive</h3>
-					<img data-src="img/variableReplacementeDirective.png" alt="">
-				</section>
-				<section>
-					<h2>Awesome, now what if we want to change the language at runtime?</h2>
-					<img data-src="img/thinking.jpg" alt="">
-				</section>
-				<section>
-					<h2>Changing language at runtime</h2>
-					<img data-src="img/change_language_runtime.png" alt="">
-				</section>
-				<section>
-					<h2>It's time to think big...</h2>
-					<h1>Asynchronous Loading</h1>
-				</section>
-			</section>
+					</section>
+					<section>
+						<h2>Variable Replacement</h2>
+						<h3>Using translate filter</h3>
+						<pre><code>{{ 'TRANSLATION_ID' | translate:'{ username: "PascalPrecht" }' }}</code></pre>
+					</section>
+					<section>
+						<h2>Variable Replacement</h2>
+						<h3>Using translate directive</h3>
+						<img data-src="img/variableReplacementeDirective.png" alt="">
+					</section>
+					<section>
+						<h2>Awesome, now what if we want to change the language at runtime?</h2>
+						<img data-src="img/thinking.jpg" alt="">
+					</section>
+					<section>
+						<h2>Changing language at runtime</h2>
+						<img data-src="img/change_language_runtime.png" alt="">
+					</section>
+					<section>
+						<h2>It's time to think big...</h2>
+						<h1>Asynchronous Loading</h1>
+						<h4>Goal: Load the translations later during runtime</h4>
+					</section>
+					<section>
+						<h2>Three strategies:</h2>
+						<ul>
+							<li>urlLoader</li>
+							<li>staticFilesLoader</li>
+							<li>partialLoader</li>
+						</ul>
 
+						<small style="color: blue">All of them are external packages, they don't come with angular-translate</small>
+					</section>
+					<section>
+						<h2>Asynchronous Loading:</h2>
+						<h3>url Loader</h3>
+						<ul>
+							<li>It's the simplest way</li>
+							<li>Package to install: <em>'angular-translate-loader-url'</em></li>
+							<img data-src="img/urlLoader.png" alt="">
+							<li>Translation file only in one place</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Asynchronous Loading:</h2>
+						<h3>static Files Loader</h3>
+						<ul>
+							<li>Several localization files which match a specific pattern</li>
+							<li>Package to install: <em>'angular-translate-loader-static-files'</em></li>
+							<li>We need to specify a pattern:</li>
+						</ul>
+						<img data-src="img/staticfileloader.png" alt="">
+					</section>
+					<section>
+						<h2>Asynchronous Loading:</h2>
+						<h3>partial Loader</h3>
+						<ul>
+							<li>When the application has multiple modules</li>
+							<li>Loads the translation data of a language for a specific module we're currently on</li>
+							<li>Package to install: <em>'angular-translate-loader-partial'</em></li>
+						</ul>
+					</section>
+					<section>
+						If we had a structure like the following:<br>
+						<img data-src="img/strcuturePartialLoader.png" alt=""><br>
+						We need to configure $translateProvider to use the partial loader with this pattern:
+						<img data-src="img/configureTranslateProvider.png" alt="">
+					</section>
+					<section>
+						<h4>Okay, so this is the inital process but what about runtime?</h4>
+						Inject <b>$translatePartialLoader</b> into your controllers and services to make use of it.<br>
+						<img data-src="img/letAngularTranslateKnow.png" alt=""><br>
+						Since $translate.refresh() <b>returns a promise</b>, it works beautifully together with either ngRoute module or UI Router
+					</section>
+					<section>
+						<h2>Limitations of angular-translate</h2>
+						<b>Pluralization</b> and <b>formatting</b> to fit language conventions is not handled by angular-translate. We might require another module(<b>messageFormat</b>)
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Formatting and Pluralization</h1>
+					</section>
+				</section>
+
+			</div>
 
 		</div>
 
-	</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
 
-	<script src="lib/js/head.min.js"></script>
-	<script src="js/reveal.js"></script>
-
-	<script>
+		<script>
 
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration

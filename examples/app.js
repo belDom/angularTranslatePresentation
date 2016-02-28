@@ -82,7 +82,7 @@ var spanishTranslations = {
 	}
 };
 
-var app = angular.module('app', ['pascalprecht.translate', 'ui.grid']);
+var app = angular.module('app', ['pascalprecht.translate', 'ui.grid', 'tmh.dynamicLocale']);
 
 app.config(['$translateProvider', function ($translateProvider) {
 
@@ -115,7 +115,11 @@ app.config(['$translateProvider', function ($translateProvider) {
 	//$translateProvider.useLocalStorage();
 }]);
 
-app.controller('mainCtrl', ['$scope', '$translate', function ($scope, $translate) {
+app.config(['tmhDynamicLocaleProvider', function (tmhDynamicLocaleProvider) {
+	tmhDynamicLocaleProvider.useStorage('');
+}]);
+
+app.controller('mainCtrl', ['$scope', '$translate', 'tmhDynamicLocale', function ($scope, $translate, tmhDynamicLocale) {
 	//-- Only for demo purposes
 	$scope.viewSelected = '';
 
