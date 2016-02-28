@@ -160,5 +160,36 @@ app.controller('mainCtrl', ['$scope', '$translate', function ($scope, $translate
 	{"name": "Nancy", "lastName": "Waters", "company": "Fuelton"}
 	];
 
+	//-- This is for high charts
+	var methodtowrite = {
+		'highcharts.months.arrayFrench': function () { return ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']; },
+		'highcharts.months.arraySpanish': function () { return ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']; },
+		'highcharts.months.loading': function() { return 'loading';}
+	};
+
+	Highcharts.setOptions({
+		lang: {
+			loading: methodtowrite['highcharts.months.loading'](),
+			months: methodtowrite['highcharts.months.arraySpanish']()
+		}
+	});
+
+	var chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'div.#highChartsGraph'
+		},
+		xAxis: {
+			type: 'datetime',
+			dateTimeLabelFormats: {
+				month: '%B'
+			}
+		},
+		yAxis: {},
+		series: [{
+			data: [0.029, 71.5, 1.06, 92, 140, 1.760, 135, 80, 0.0216, 0.194, 9.56, 54.4]  ,
+			pointStart: Date.UTC(2010, 0, 1),
+            pointInterval: 30 * 24 * 3600 * 1000 // 30 days
+        }]
+    });
 
 }]);

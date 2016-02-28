@@ -43,6 +43,7 @@
               <li><a ng-click="viewSelected = 'usingTranslateDirective'">Using translate directive</a></li>
               <li><a ng-click="viewSelected = 'insideLoop'">Using translate inside a ng-repeat</a></li>
               <li><a ng-click="viewSelected = 'variableReplacement'">Variable replacement</a></li>
+              <li><a ng-click="viewSelected = 'formatsAndPluralization'">Formats and Pluralization</a></li>
               <li><a ng-click="viewSelected = 'uigrid'">ui-grid and $translate</a></li>
               <li><a ng-click="viewSelected = 'highCharts'">Hightcharts internationalization</a></li>
             </ul>
@@ -145,6 +146,13 @@
                 </div>
               </div>
 
+              <div ng-switch-when="formatsAndPluralization" class="text-center">
+                <div class="well">
+                  <h1>Formats and Pluralization</h1>
+
+                </div>
+              </div>
+
               <!-- UI-GRID -->
               <div ng-switch-when="uigrid" class="text-center">
                 <div class="well">
@@ -155,7 +163,10 @@
 
               <!-- HIGH charts-->
               <div ng-switch-when="highCharts" class="text-center">
-                <h1>Highcharts</h1>
+                <div class="well">
+                  <h1>Highcharts</h1>
+                  <div id="highChartsGraph" style="height: 300px"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -170,5 +181,7 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <script src="assets/js/bootstrap.min.js"></script>
+      <script src="http://code.highcharts.com/highcharts.js"></script>
+
     </body>
     </html>
