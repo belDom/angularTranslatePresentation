@@ -110,18 +110,12 @@ app.config(['$translateProvider', function ($translateProvider) {
 	//$translateProvider.preferredLanguage('en');
 	// -- Delegating the preferred language to the window.naviga
 	$translateProvider.determinePreferredLanguage();
-
-	//-- For using the local storage
-	//$translateProvider.useLocalStorage();
-}]);
-
-app.config(['tmhDynamicLocaleProvider', function (tmhDynamicLocaleProvider) {
-	tmhDynamicLocaleProvider.useStorage('');
 }]);
 
 app.controller('mainCtrl', ['$scope', '$translate', 'tmhDynamicLocale', function ($scope, $translate, tmhDynamicLocale) {
 	//-- Only for demo purposes
 	$scope.viewSelected = '';
+	$scope.currentDate = new Date();
 
 	//-- When translating a single translation IDs
 	$translate('WEEK_DAYS.MONDAY').then(function (day) {
@@ -148,6 +142,7 @@ app.controller('mainCtrl', ['$scope', '$translate', 'tmhDynamicLocale', function
 	//-- For changing the language
 	$scope.changeLanguage = function (key) {
 		$translate.use(key);
+		tmhDynamicLocale.set(key);
 	}
 
 	//-- This is for UI-GRID

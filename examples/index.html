@@ -20,6 +20,7 @@
   <script src="assets/js/angular-translate.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.0/angular-sanitize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-dynamic-locale/0.1.30/tmhDynamicLocale.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-interpolation-messageformat/2.9.2/angular-translate-interpolation-messageformat.min.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -156,7 +157,8 @@
               <div ng-switch-when="formatsAndPluralization" class="text-center">
                 <div class="well">
                   <h1>Formats and Pluralization</h1>
-
+                  <h2>Currency: {{ 20 | currency}}</h2>
+                  <h2>Dates: {{currentDate | date}}</h2>
                 </div>
               </div>
 
