@@ -149,8 +149,8 @@ app.controller('mainCtrl', ['$scope', '$translate', 'tmhDynamicLocale', function
 	$scope.gridOptions = {};
 
 	$scope.gridOptions.columnDefs = [
-	{ displayName: 'UI_GRID.NAME', field: 'name', headerCellFilter: 'translate' },
-	{ displayName: 'UI_GRID.LAST_NAME', field: 'lastName', headerCellFilter: 'translate' },
+	{ displayName: 'UI_GRID.NAME', field: 'name', headerCellFilter: 'translate',enableFiltering: false  },
+	{ displayName: 'UI_GRID.LAST_NAME', field: 'lastName', headerCellFilter: 'translate',enableFiltering: false  },
 	{ displayName: 'UI_GRID.COMPANY', field: 'company', headerCellFilter: 'translate', enableFiltering: false  }
 	];
 	$scope.gridOptions.data = [

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>reveal.js – The HTML Presentation Framework</title>
+	<title>Presentation</title>
 
 	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 	<meta name="author" content="Hakim El Hattab">
@@ -47,12 +47,12 @@
 				<section>
 					<h2>Topics:</h2>
 					<ul>
-						<li>What is internationalization?</li>
-						<li>angular-translate</li>
-						<li>Pluralization and Formatting</li>
-						<li>UI-Grid</li>
-						<li>HighCharts</li>
-						<li>Unit tests</li>
+						<li><a href="#/2">What is internationalization?</a></li>
+						<li><a href="#/3">angular-translate</a></li>
+						<li><a href="#/4">Formatting & Pluralization</a></li>
+						<li><a href="#/5">UI-Grid</a></li>
+						<li><a href="#/6">HighCharts</a></li>
+						<li><a href="#/7">Unit tests</a></li>
 					</ul>
 				</section>
 
@@ -245,11 +245,99 @@
 						<a href="https://github.com/lgalfaso/angular-dynamic-locale">
 							<img data-src="img/dynamicLocale.png" alt="">
 						</a><br>
-						By injecting to our controller <b>tmhDynamicLocale</b> and use is as the example below:<br>
-						
+					</section>
+					<section>
+						<h2>Formatting</h2>
+						Inject it to your controller <b>tmhDynamicLocale</b> and use is as the example below:<br>
+						<img data-src="img/usingDynamicLocale.png" alt="">
+					</section>
+					<section>
+						<h2>Pluralization</h2>
+					</section>
+					<section>
+						<h2>Pluralization</h2>
+						It's not supported by angular-translate nor by angularJS, but both of them suggest ussing: <b>messageFormat</b><br>
+						<a href="https://github.com/SlexAxton/messageformat.js">
+							<img data-src="img/ngFormat.png" alt="">
+						</a><br>
+						In order to use it we need to add to the config file:
+						<pre><code>$translateProvider.useMessageFormatInterpolation();</code></pre>
+					</section>
+					<section>
+						<h2>Pluralization</h2>
+						This will allows us to add in our translations:<br>
+						<img data-src="img/pluralization.png" alt=""><br>
+						And we'll be able to use it, as the following shows:<br>
+						<img data-src="img/pluralizationExample.png" alt="">
+					</section>
+					<section>
+						<h2>Pluralization</h2>
+						<img data-src="img/problem.jpg" alt="" style="width: 200px"><br>
+						The problem with this that we cannot differentiate pluralization from variable replacement. In order to differentiate one from another we need to <b>overwrite the interpolation temporarily.</b><br>
+						<em>Example: <a href="http://plnkr.co/edit/Mr9RePc0UTvJGF7PxjiL?p=preview">Overwrite interpolation temporarily</a></em>
+					</section>
+					<section>
+						<h2>Pluralization</h2>
+						<h3>Overwriting the interpolation temporarily</h3>
+						<ol>
+							<li>Add the following to the provider</li>
+							<pre><code>$translateProvider.addInterpolation('$translateMessageFormatInterpolation');</code></pre>
+							(Makes $translate aware that there's another interpolation service that could be used for specific translations)
+							<li>Setup a new translation table with translations that use default interpolation and MessageFormat interpolation</li>
+							<img data-src="img/translationWithInterpolations.png" alt="">
+						</ol>
+					</section>
+					<section>
+						<h2>Pluralization</h2>
+						<h3>Overwriting the interpolation temporarily</h3>
+						<h4>Using the different interpolations in... a service</h4>
+						<img data-src="img/interpolationsAsAService.png" alt="">
+					</section>
+					<section>
+						<h2>Pluralization</h2>
+						<h3>Overwriting the interpolation temporarily</h3>
+						<h4>Using the different interpolations in... a filter</h4>
+						<img data-src="img/interpolationAsAFilter.png" alt="">
+					</section>
+					<section>
+						<h2>Pluralization</h2>
+						<h3>Overwriting the interpolation temporarily</h3>
+						<h4>Using the different interpolations in... a directive</h4>
+						<img data-src="img/interporaltionAsDirective.png" alt="">
 					</section>
 				</section>
-
+				<section>
+					<section>
+						<h1>UI-GRID</h1>
+					</section>
+					<section>
+						<h2>UI-GRID</h2>
+						When translating the headers: <br>
+						<img data-src="img/uigrid.png" alt="">
+					</section>
+					<section>
+						<h2>UI-GRID</h2>
+						When translating the filters: <br>
+						<a href="http://plnkr.co/edit/KnrKTst5dWXvlZNeIy9c?p=preview">Plunker example</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>HighCharts</h1>
+					</section>
+					<section>
+						<img data-src="img/highCharts.png" alt="">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Unit tests</h1>
+					</section>
+					<section>
+						<h2>Unit tests</h2>
+						<img data-src="img/mockingUnitTests.png" alt="">
+					</section>
+				</section>
 			</div>
 
 		</div>
