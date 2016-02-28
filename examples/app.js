@@ -1,5 +1,6 @@
 'use strict';
 
+//-- Our translations
 var englishTranslations = {
 	'THIS_IS_AN_EXAMPLE': 'This is an example',
 	'ONLY_ENGLISH': 'This text is only in english',
@@ -9,6 +10,9 @@ var englishTranslations = {
 	},
 	'COMMON': {
 		'SEND': 'This is a common text'
+	},
+	'COMMON_ANOTHER': {
+		'SEND': '@:COMMON.SEND'
 	},
 	'WEEK_DAYS': {
 		'MONDAY': 'Monday',
@@ -86,19 +90,20 @@ var app = angular.module('app', ['pascalprecht.translate', 'ui.grid', 'tmh.dynam
 
 app.config(['$translateProvider', function ($translateProvider) {
 
-	// -- It is important to set up a fallback language. To set up a fallback language is important because it would be the language set as defeault when the text does not have any translation.
-	$translateProvider.fallbackLanguage(['en', 'de']);
+	// -- It is important to set up a fallback language. The fallback language is the language that is going to be used when the translation for the translation_ID was not found.
+	$translateProvider.fallbackLanguage('en');
+	//-- We can also have an array of fallback languages, which are chosen in the order declarted.
+	//$translateProvider.fallbackLanguage(['en', 'de']);
 
-	// -- Where the languages keys are registered. The main goal is that no matter what subtype of language the user selects it is going to fallback to the ones that we have available.
-	// -- Useful for when the browser will set up the language. This is important for when trying to avoid the language subfix. Ex: en_UK, en_US.
+	// -- Where the languages keys are registered. The main goal is that no matter what subtype of language the user selects, it is going to fallback to the ones that we have available. Example: en_UK, en_Us
 	$translateProvider.registerAvailableLanguageKeys(['en', 'de', 'es'], {
 		'en_*': 'en',
 		'de_*': 'de',
 		'es_*': 'es'
 	});
 
-	// -- Where we define our translations. The JSON files containing the translations for the specific languages can be defined on separate files and imported with the keyword require.
-	// -- The variables must match exactly.
+	// -- Where we define our translations. The JSON files containing the translations for the specific languages can be defined on separate files.
+	// -- The translations_IDs must be the same on the different languages.
 	$translateProvider.translations('en', englishTranslations);
 	$translateProvider.translations('de', germanTranslations);
 	$translateProvider.translations('es', spanishTranslations);
@@ -106,9 +111,10 @@ app.config(['$translateProvider', function ($translateProvider) {
 	//-- Apply sanitize. Angular Sanitize is needed in order the result is escaped correctly, which would make our app vurnerable. This is suggested by the angular-translate authors.
 	$translateProvider.useSanitizeValueStrategy('escape');
 
-	// -- The preferred language by default
-	//$translateProvider.preferredLanguage('en');
-	// -- Delegating the preferred language to the window.naviga
+	// -- We can force a preferred language
+	$translateProvider.preferredLanguage('en');
+
+	// -- Or we can delegate this to the browser by using:
 	$translateProvider.determinePreferredLanguage();
 }]);
 
@@ -117,12 +123,12 @@ app.controller('mainCtrl', ['$scope', '$translate', 'tmhDynamicLocale', function
 	$scope.viewSelected = '';
 	$scope.currentDate = new Date();
 
-	//-- When translating a single translation IDs
+	//-- When translating a single translation IDs with $translate service.
 	$translate('WEEK_DAYS.MONDAY').then(function (day) {
 		$scope.monday = day;
 	});
 
-	//-- When translating multiple translation IDs
+	//-- When translating multiple translation IDs with $translate service.
 	$translate(['WEEK_DAYS.TUESDAY', 'WEEK_DAYS.WEDNESDAY']).then(function (response) {
 		$scope.tuesday = response['WEEK_DAYS.TUESDAY'];
 		$scope.wednesday = response['WEEK_DAYS.WEDNESDAY'];
